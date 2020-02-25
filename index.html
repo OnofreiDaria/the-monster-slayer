@@ -48,11 +48,13 @@
     <section class="row log" v-if="turns.length > 0">
         <div class="small-12 columns">
             <ul>
-                <li
-                    v-for="turn in turns"
-                    :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
-                    {{ turn.text }}
-                </li>
+                <transition-group name="slide">
+                    <li
+                        v-for="turn in turns" :key="turn"
+                        :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
+                        {{ turn.text }}
+                    </li>
+                </transition-group>
             </ul>
         </div>
     </section>
